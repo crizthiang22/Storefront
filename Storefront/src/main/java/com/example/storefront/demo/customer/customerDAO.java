@@ -1,4 +1,4 @@
 package com.example.storefront.demo.customer;
 
-public interface customerDAO gi{
+public interface customerDAO {
 }
