@@ -1,11 +1,68 @@
 package com.example.storefront.demo.customer;
+import jakarta.persistence.*;
+import static jakarta.persistence.GenerationType.SEQUENCE;
 
+@Entity (name = "customer")
+@Table
 public class customer {
-        private String name;
-        private int age;
-        private String email;
-        private String userName;
+
+        @Id
+        @SequenceGenerator(
+                name = "customer_sequence",
+                sequenceName = "customer_sequence",
+                allocationSize = 1
+        )
+        @GeneratedValue (
+                strategy = SEQUENCE,
+                generator = "customer_sequence"
+
+        )
+        @Column(
+                name ="id",
+                updatable = false
+        )
         private int id;
+
+        @Column(
+                name = "name",
+                nullable = false,
+                columnDefinition = "TEXT"
+        )
+        private String name;
+
+        @Column (name ="age")
+        private int age;
+
+        @Column(
+                name ="email",
+                columnDefinition = "TEXT",
+                nullable = false
+
+        )
+        private String email;
+
+        @Column(
+                name ="userName",
+                nullable = false,
+                unique = true
+        )
+        private String userName;
+
+
+    public customer(String name,
+                    int age,
+                    String email,
+                    String userName,
+                    int id) {
+        this.name = name;
+        this.age = age;
+        this.email = email;
+        this.userName = userName;
+        this.id = id;
+    }
+
+    public customer() {
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -45,5 +102,16 @@ public class customer {
 
     public int getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "customer{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                ", userName='" + userName + '\'' +
+                ", id=" + id +
+                '}';
     }
 }
