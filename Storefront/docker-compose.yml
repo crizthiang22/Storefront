@@ -6,6 +6,7 @@ services:
     environment:
       MYSQL_DATABASE: Storefront
       MYSQL_USER: Cristhian
+      MYSQL_PASSWORD: password22
       MYSQL_ROOT_PASSWORD: password22
     volumes:
         - db:/var/lib/mysql
